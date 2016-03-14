@@ -1,0 +1,25 @@
+<div id="circleModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span type="button" class="close" data-dismiss="modal">&times;</span>
+                <div id="modalTile"><h2 class="modal-title">Tile Calculation</h2></div>
+            </div>
+            <div class="modal-body">
+                 <div ng-if="roomSqft()/circleSqft() > 0">
+                    <p>Without any waste tiles, it will take {{(roomSqft()/circleSqft() | setDecimal:0)}} tiles to complete this Job.</p>
+                </div>
+                <div ng-if="cirWaste > 0">
+                    <p>It will take {{(roomSqft()/circleSqft())*((cirWaste / 100) + 1) | setDecimal:0}} tiles to complete this job. This includes {{cirWaste}}% Waste.</p> 
+                </div>
+                <div ng-if="circleSqft() > roomSqft()">
+                    <p>1 tile this size will get the job done! </p>
+                </div>
+                <div ng-if="cirPrice > 0">
+                    <p>This project will cost <span ng-if="(roomSqft()/circleSqft())>1">${{(roomSqft()/circleSqft())*cirPrice | setDecimal:2}}
+                        </span> <span ng-if="(roomSqft()/circleSqft()) < 1"> {{cirPrice | currency}}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
