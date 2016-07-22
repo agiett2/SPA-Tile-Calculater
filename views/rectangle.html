@@ -1,96 +1,58 @@
-
 <div class="row">
-    <div class="col-lg-12">
-    <div id="roomSize" class="col-lg-6">
-    <h1><span>Room</span></h1>
-    <form name="roomForm" class="col-lg-12"  novalidate>
-        <div class="col-lg-12">
-            <p>Please enter the size of the room you are flooring below.</p>
-        </div>
-        <div class="col-lg-12">
-            <img class="col-lg-6" src="images/room.png">
-        </div>
-        <div id="roomLength" class="col-lg-4">
-            <h4>Length</h4>
-            <div class="form-group">
-                <label class="col">Ft</label>
-                <input type="text" size=4 name="lengthFt" ng-model="lengthFt" />
-            </div>
-            <div class="form-group">
-                <label>In</label>
-                <input type="text" size="4" name="lengthInches" ng-model="lengthInches" required />
-            </div>
-        </div>
-        <div id="roomWidth" class="col col-lg-4">
-            <h4>Width</h4>
-            <div class="form-group">
-                <label>Ft</label>
-                <input type="text" size=4 ng-model="widthFt"/>
-            </div>
-            <div class="form-group">
-                <label>In</label>
-                <input type="text" size=4 ng-model="widthInches" required/>
-            </div>
-        </div>
-        <div class="col col-lg-12">
-            <div ng-if="roomSqft() > 0" >
-                <p>The total square feet of this room is {{roomSqft() | setDecimal:2}} sqft</p>
-            </div>
-        </div>
-    </form>
-</div>
-<div class="col-lg-6">
-    <h1><span>Tile</span></h1>
-<form class="form-horizontal col-lg-12" name="recForm">
-    <div class="col-lg-12">
-            <p>Please enter the size of the tile below.</p>
-        </div>
-    <div class="col-lg-12">
-        <img src="images/rectangle.png">
-    </div>
-    <div id="recLength" class="col-lg-4">
-        <h4>Length</h4>
-        <div class="form-group">
-            <label>Ft</label>
-            <input type="text" size=4 ng-model="recLengthFt"  />
-        </div>
-        <div class="form-group">
-            <label>In</label>
-            <input  size=4 type="text" ng-model="recLengthInches" required />
+    <div class="col-sm-12">
+        <room></room>
+        <div class="col-sm-6">
+            <h1><span>Tile</span></h1>
+            <form class="form-horizontal col-sm-12" name="recForm">
+                <div class="col-lg-12">
+                    <p>Please enter the size of the tile below.</p>
+                </div>
+                <div class="col-sm-12">
+                    <img src="images/rectangle.png">
+                </div>
+                <div id="recLength" class="col-sm-4">
+                    <h4>Length</h4>
+                    <div class="form-group">
+                        <label>Ft</label>
+                        <input type="text" size=4 ng-model="recLengthFt"  />
+                    </div>
+                    <div class="form-group">
+                        <label>In</label>
+                        <input  size=4 type="text" ng-model="recLengthInches" required />
+                    </div>
+                </div>
+                <div id="recWidth" class="col-sm-4">
+                    <h4>Width</h4>
+                    <div class="form-group">
+                        <label>Ft </label>
+                        <input type="text" size=4 ng-model="recWidthFt" />
+                    </div>
+                    <div class="form-group">
+                        <label>In</label>
+                        <input  type="text" size=4 ng-model="recWidthInches" required/>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <h4>Other</h4>
+                    <div class="form-group">
+                        <label>Waste %</label>
+                        <input type="text" size=4 ng-model="recWaste">
+                    </div>
+                    <div class="form-group">
+                        <label>Tile $</label>
+                        <input type="text" size=4 ng-model="recPrice">
+                    </div>
+                </div>
+                <div class="col-sm-12" >
+                    <div class="col-lg-2">
+                        <button  ng-disabled="recForm.$invalid" type="button"   data-toggle="modal" data-target="#recModal" class="btn btn-primary">Tiles Needed</button>
+                    </div>
+                    <div class="col-sm-10">
+                        <p ng-if="recTileSqft() > 0">This tile covers {{recTileSqft() | setDecimal: 2}} sqft.</p>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-    <div id="recWidth" class="col-lg-4">
-        <h4>Width</h4>
-        <div class="form-group">
-            <label>Ft </label>
-            <input type="text" size=4 ng-model="recWidthFt" />
-        </div>
-        <div class="form-group">
-            <label>In</label>
-            <input  type="text" size=4 ng-model="recWidthInches" required/>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <h4>Other</h4>
-        <div class="form-group">
-            <label>Waste %</label>
-            <input type="text" size=4 ng-model="recWaste">
-        </div>
-        <div class="form-group">
-            <label>Tile $</label>
-            <input type="text" size=4 ng-model="recPrice">
-        </div>
-    </div>
-    <div class="col-lg-12" >
-        <div class="col-lg-2">
-            <button  ng-disabled="recForm.$invalid" type="button"   data-toggle="modal" data-target="#recModal" class="btn btn-primary">Tiles Needed</button>
-        </div>
-        <div class="col-lg-10">
-            <p ng-if="recTileSqft() > 0">This tile covers {{recTileSqft() | setDecimal: 2}} sqft.</p>
-        </div>
-    </div> 
-</form>
-</div>
-</div>
 </div>
 <rec-Modal></rec-Modal>

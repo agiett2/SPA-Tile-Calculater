@@ -29,3 +29,10 @@ app.directive('triModal', function(){
         templateUrl: 'modal/triModal.html'
     };
 });
+app.directive('room', function(){
+    return{
+        controller: 'indexCtrl',
+        restrict: 'E',
+        templateUrl: 'views/room.html'
+    };
+})
