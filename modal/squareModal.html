@@ -6,18 +6,19 @@
                 <div id="modalTile"><h2 class="modal-title">Tile Calculation</h2></div>
             </div>
             <div class="modal-body">
-                 <div ng-if="roomSqft()/ sqSqft() > 0">
+                 <div ng-if="roomSqft()/ sqSqft() > 1">
                      <p>Without any waste tiles, it will take {{(roomSqft()/sqSqft() | setDecimal:0)}} tiles to complete this Job.</p>
                 </div>
                 <div ng-if="sqWaste > 0">
-                    <p>It will take {{(roomSqft()/sqSqft())*((sqWaste / 100) + 1) | setDecimal:0}} tiles to complete this job. This includes {{sqWaste}}% Waste.</p>
+                    <p ng-if="(roomSqft()/sqSqft()) > 1">It will take {{(roomSqft()/sqSqft())*((sqWaste / 100) + 1) | setDecimal:0}} tiles to complete this job. This includes {{sqWaste}}% Waste.</p>
+                    <p ng-if="(roomSqft()/sqSqft()) < 1">It will take 1 tile to complete this job. This includes {{sqWaste}}% Waste.</p>
                 </div>
                 <div ng-if="sqSqft() > roomSqft()">
                     <p>1 tile this size will get the job done!
                 </div>
                 <div ng-if="sqPrice > 0">
-                    <p>This project will cost <span ng-if="(roomSqft()/sqSqft())>1">${{(roomSqft()/sqSqft())*sqPrice | setDecimal:2}}
-                        </span> <span ng-if="(roomSqft()/sqSqft()) < 1"> {{sqPrice | currency}}</span></p>
+                   <p ng-if="(roomSqft()/sqSqft()) > 1">This project will cost {{(roomSqft()/sqSqft())*sqPrice | currency}} 
+                    <p ng-if="(roomSqft()/sqSqft()) < 1"> This project will cost {{sqPrice | currency}}</p>
                 </div>
             </div>
         </div>
