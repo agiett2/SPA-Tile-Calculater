@@ -18,6 +18,7 @@
                 </div>
                 <div ng-if="cirPrice > 0">
                     <p ng-if="(roomSqft()/circleSqft())>1">This project will cost {{(roomSqft()/circleSqft())*cirPrice | currency}}</p>
+                    <p ng-if="(roomSqft()/circleSqft())<1">This project will cost {{cirPrice | currency}}</p>
                 </div>
             </div>
         </div>

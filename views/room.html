@@ -31,7 +31,7 @@
             </div>
             <div class="col col-sm-12">
                 <div ng-if="roomSqft() > 0" >
-                    <p>The total square feet of this room is {{roomSqft(lengthFt,lengthInches, widthFt, widthInches) | setDecimal:2}} sqft</p>
+                    <p>The total square feet of this room is {{roomSqft() | setDecimal:2}} sqft</p>
                 </div>
             </div>
     </form>
